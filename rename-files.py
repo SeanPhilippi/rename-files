@@ -1,4 +1,5 @@
 # for each character in file name, check for [, ], {, }, (, ), ''
+# do a regex search for substrings starting and ending with '.' and replace with ''
 # if there is substring of 4 digits, and the first 2 aren't 10 (1080), then slice and append to end?
 # if a single file in a folder, mv out of folder and delete folder
 
