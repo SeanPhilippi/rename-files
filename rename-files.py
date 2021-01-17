@@ -4,6 +4,7 @@
 # if a single file in a folder, mv out of folder and delete folder
 
 import os
+import re
 
 os.chdir(os.path.expanduser('~'))
 dirs = os.listdir('./Downloads')
@@ -14,20 +15,7 @@ for filename in dirs:
 			filename = filename.replace(ch, '.')
 	
 	print('loop 2:', filename)
-	filename_list = list(filename)
-	for i, ch in enumerate(filename_list):
-		length = len(filename)
-		if ch == '.' and i + 1 < length and filename_list[i + 1] == '.':
-			print('filename_list[i - 1], i - 1', filename_list[i - 1], i - 1)
-			print('ch, i', ch, i)
-			print('filename_list[i + 1], i + 1', filename_list[i + 1], i + 1)
-			filename_list[i + 1] = ''
-			length -= 1
-			if i - 1 >= 0 and filename_list[i - 1] == '' or filename_list[i + 1] == '.':
-				print('i - 1', i - 1)
-				print('filename_list[i]', filename_list[i])
-				filename_list[i] = ''
-				length -= 1
-	filename = ''.join(filename_list)
+
+	filename = re.sub(r'\.\.+', '.', filename)
 	print('newname', filename)
 
